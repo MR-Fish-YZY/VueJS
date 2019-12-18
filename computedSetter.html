@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app12">
+        <p>{{firstName}}</p>
+        <p>{{lastName}}</p>
+        <p>{{fullName}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app12',
+        data() {
+            return {
+                firstName: 'john',
+                lastName: 'smith'
+            }
+        },
+        computed: {
+            fullName: {
+                get: function(){
+                    return this.firstName + ' ' + this.lastName
+                },
+                set: function(newValue){
+                    console.log(newValue);
+                    var name = newValue.split(' ');
+                    this.firstName = name[0]
+                    this.lastName = name[name.length - 1]
+                }
+            }
+        },
+    })
+</script>
+</html>
