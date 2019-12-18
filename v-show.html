@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #block{
+            width: 200px;
+            height: 200px;
+            background: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="app8">
+        <button v-on:click="showBlock">{{btnInfo}}</button>
+        <div id="block" v-show="show">
+
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app8',
+        data() {
+            return {
+                show: true,
+                btnInfo: 'hide'
+            }
+        },
+        methods: {
+            showBlock: function(){
+                this.show = !this.show;
+                if(this.btnInfo == "show"){
+                    this.btnInfo = "hide";
+                }else{
+                    this.btnInfo = "show";
+                }
+            }
+        },
+    })
+</script>
+</html>
