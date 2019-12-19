@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            color: greenyellow;
+        }
+        .danger{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="classApp1">
+        <div v-bind:class="{active: isActive, danger: hasError}">{{msg}}</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#classApp1',
+        data() {
+            return {
+               isActive: true,
+               hasError: false,
+               msg: 'hello vue' 
+            }
+        }
+    })
+</script>
+</html>

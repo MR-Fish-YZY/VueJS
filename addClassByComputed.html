@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            color: greenyellow;
+        }
+
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="classApp3">
+        <div v-bind:class="classObj">{{msg}}</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //通过计算属性添加class
+    var vm = new Vue({
+        el: '#classApp3',
+        data() {
+            return {
+                msg: 'hello vue',
+                isActicve: true,
+                error: null
+            }
+        },
+        computed: {
+            classObj() {
+                return {
+                    active: this.isActicve && !this.error,
+                    'text-danger': this.error && this.error === 'fail'
+                }
+            }
+        },
+    })
+</script>
+
+</html>

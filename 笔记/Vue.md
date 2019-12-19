@@ -38,7 +38,6 @@ v-once--------------->只渲染一次
 例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 `event.preventDefault()`：
 
 <form v-on:submit.prevent="onSubmit">...</form>
-
 # vue模板：
 
 ```javascript
@@ -86,7 +85,6 @@ v-once--------------->只渲染一次
 模板内不应放入太多逻辑例如
 
 <div id="example">   {{ message.split('').reverse().join('') }} </div>
-
 对于任何复杂逻辑都应该使用计算属性computed
 
 ```
@@ -134,7 +132,7 @@ var vm = new Vue({
 
 ## 计算属性缓存VS方法
 
-计算属性基于响应式依赖进行缓存 只有在依赖发生变化时才会重新求值（在computed中使用Date.now()不会实时刷新，因为Date.now()不是响应式依赖）
+## 计算属性基于响应式依赖进行缓存 只有在依赖发生变化时才会重新求值（在computed中使用Date.now()不会实时刷新，因为Date.now()不是响应式依赖）
 
 方法则每次触发渲染时就会执行函数
 
@@ -148,5 +146,16 @@ watch回调是命令式的（复杂重复），计算属性是响应式的（简
 
 # class与style绑定
 
+## 对象写法
 
 
+
+## 数组写法
+
+
+
+## 计算属性写法
+
+
+
+## 用在组件上写法
