@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="styleApp2">
+        <div :style="styleObj">{{msg}}</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#styleApp2',
+        data() {
+            return {
+                styleObj: {
+                    color: 'red',
+                    fontSize: '50px',
+                    border: '3px solid #000',
+                    textAlign: 'center'
+                },
+                msg: 'hello vue'
+            }
+        },
+    })
+    // 常常配合计算属性一起使用
+</script>
+</html>

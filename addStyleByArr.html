@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="styleApp3">
+        <!-- 浏览器前缀vue会自动侦测并添加 -->
+        <div :style="[fontStyle, divStyle]">{{msg}}</div>
+        <!-- 可以用数组的方式绑定多个值，但是浏览器只会渲染最后一个支持的值 -->
+        <div :style="{display: ['-webkit-box', '-ms-flexbox', 'flex']}"></div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#styleApp3',
+        data() {
+            return {
+                fontStyle: {
+                    color: 'red',
+                    fontSize: '50px',
+                    textAlign: 'center'
+                },
+                divStyle: {
+                    height: '200px',
+                    width: '200px',
+                    border: '4px solid #000',
+                },
+                msg: 'hello vue'
+            }
+        },
+    })
+</script>
+</html>

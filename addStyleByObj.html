@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="styleApp1">
+        <!-- 绑定style使用对象写法 -->
+        <div v-bind:style="{color: activeColor, fontSize: fontSize}">{{msg}}</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#styleApp1',
+        data() {
+            return {
+                activeColor: 'red',
+                'fontSize': '30px',        //不能使用连字符
+                msg: 'hello vue'
+            }
+        },
+    })
+</script>
+</html>
