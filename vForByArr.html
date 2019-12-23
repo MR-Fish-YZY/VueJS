@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="forApp1">
+        <ul>
+            <!-- 可以有第二个参数 数组索引 -->
+            <li v-for="(item, index) in items">
+                {{index}}:{{item.name}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#forApp1',
+        data() {
+            return {
+                items: [{
+                    name: '数学'
+                }, {
+                    name: '语文'
+                }, {
+                    name: '英语'
+                }]
+
+            }
+        },
+    })
+</script>
+
+</html>
