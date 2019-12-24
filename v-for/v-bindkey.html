@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="bindKey">
+        <ol>
+            <!-- v-bind:key 值为数字或字符串【不要使用对象或数组】 -->
+            <!-- v-bind:key 为每一项添加唯一标识 可以用于排序等操作 -->
+            <!-- 建议尽可能在使用 v-for 时提供 key -->
+            <li v-for="item in items" v-bind:key="item.id">
+                {{item.message}}
+            </li>
+        </ol>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#bindKey',
+        data() {
+            return {
+                items: [{
+                        id: 0,
+                        message: 'Foo'
+                    },
+                    {
+                        id: 1,
+                        message: 'Bar'
+                    }
+                ]
+            }
+        },
+    })
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="vIfKey">
+        <template v-if="loginType == 'userName'">
+            <label for="userName">用户名：</label>
+            <!-- key属性为input添加唯一标识    每次切换输入框都会重新渲染    不加则不会重新渲染 保留之前的值 -->
+            <input type="text" id="userName" placeholder="请输入用户名" key="userName-input">
+        </template>
+        <template V-else>
+            <label for="email">邮箱：</label>
+            <input type="text" id="email" placeholder="请输入邮箱" key="email-input">
+        </template>
+        <button @click="changeLoginType">切换登录方式</button>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#vIfKey',
+        data() {
+            return {
+               loginType : 'userName'
+            }
+        },
+        methods: {
+            changeLoginType() {
+                return this.loginType = this.loginType == "userName" ? "email" : "userName"
+            }
+        },
+    })
+</script>
+</html> 

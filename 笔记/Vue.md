@@ -4,13 +4,123 @@ v-if--------->控制dom插入移除（删除dom）
 
 v-on----------->为dom绑定事件		简写：例------------->	@click="doSomething"
 
+1. 函数参数---> v-on:click="say('参数')"
+
+2. 事件修饰符
+
+   写法：<a v-on:click.stop="doThis"></a>
+
+   .stop	.prevent	.capture	.self	.once（只触发一次）	.passive（addEventListener中的passive）
+
+3. 按键修饰符
+
+   写法<input v-on:keyup.13="submit">（13为按键码）
+
+   .enter	.tab	.delete（删除或退格键）	.esc	.space	.up	.down	.left	.right
+
+   可以通过全局 `config.keyCodes` 对象[自定义按键修饰符别名](https://cn.vuejs.org/v2/api/#keyCodes)：Vue.config.keyCodes.f1 = 112
+
+4. 系统修饰键--->仅在按下相应按键时才触发鼠标或键盘事件的监听器。
+
+   .ctrl	.alt	.shift	.meta
+
+   <!-- Alt + C --> <input @keyup.alt.67="clear"> 
+
+   <!-- Ctrl + Click --> <div @click.ctrl="doSomething">Do something</div>
+
+   .exact修饰符--->精确控制触发
+
+   <!-- 即使 Alt 或 Shift 被一同按下时也会触发 --> <button @click.ctrl="onClick">A</button> 
+
+   <!-- 有且只有 Ctrl 被按下的时候才触发 --> <button @click.ctrl.exact="onCtrlClick">A</button>
+
+    <!-- 没有任何系统修饰符被按下的时候才触发 --> <button @click.exact="onClick">A</button>
+
+5. 鼠标按键修饰符
+
+   .left	.right	.middle
+
 v-show----------->控制显示隐藏（隐藏dom【display:none】）
 
 v-bind----------->为dom绑定属性		简写：例-------------->	:href="url"
 
-v-for----------->循环输出数据
+v-for----------->循环输出数据--->
+
+1. 写法：'item in tiems'或'item of items'
+
+2. 建议为每一项绑定key ---> v-bind:key='item.id' 或 :key='item.id'
+
+3. 数组变异方法（改变原始数组）
+
+   push()、pop()、shift()、unshift()、splice()、sort()、reverse()
+
+4. 非变异方法（不改变原数组）
+
+   filter()、concat()、slice()
+
+5. **注意** 改变数组长度以及通过索引改变数组值 都不是响应式的！！！
+
+   ​		为数组手动添加值也不是响应式的！！！
+
+   ​	解决改变通过索引改变数组值--->使用vm.$set(vm.items, index, newValue)
+
+   ​	解决修改数组长度--->使用vm.items.splice(newLength)
+
+   ​	解决为数组添加值--->使用Vue.set(vm.items, propertyName, value) 或 vm.$set； 添加多个新属性 使用Object.assign()` 或 `_.extend()
+
+   ​	vm.userProfile = Object.assign({}, vm.userProfile, {  age: 27,  favoriteColor: 'Vue Green' })
+
+6. 显示过滤/排序后的结果
+
+   ```js
+   <li v-for="n in evenNumbers">{{ n }}</li>
+   data: {
+     numbers: [ 1, 2, 3, 4, 5 ]
+   },
+   computed: {
+     evenNumbers: function () {
+       return this.numbers.filter(function (number) {
+         return number % 2 === 0
+       })
+     }
+   }
+   ```
+
+   ```js
+   <li v-for="n in even(numbers)">{{ n }}</li>
+   data: {
+     numbers: [ 1, 2, 3, 4, 5 ]
+   },
+   methods: {
+     even: function (numbers) {
+       return numbers.filter(function (number) {
+         return number % 2 === 0
+       })
+     }
+   }
+   ```
+
+7. v-for可以直接输出数字 <span v-for="n in 10">{{ n }} </span>
+
+8. 同时渲染多个元素使用template包起来
+
+9. v-if 和 v-for一起用时 可以分层
+
+   <ul v-if="todos.length">  <li v-for="todo in todos">    {{ todo }}  </li> </ul>
+
+10. 组件上使用v-for时 v-bind:key时必须的   
 
 v-model----------->双向绑定
+
+1. 可以用在text、textarea
+
+   ​				checkbox、radio--->对应change事件
+
+   ​				select
+
+2. 
+
+   ​			
 
 v-html------------->解析html字符串（慎用）
 
@@ -37,7 +147,8 @@ v-once--------------->只渲染一次
 
 例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 `event.preventDefault()`：
 
-<form v-on:submit.prevent="onSubmit">...</form>
+<form v-on:submit.prevent="onSubmit"> </form>
+
 # vue模板：
 
 ```javascript
