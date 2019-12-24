@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <count-click></count-click>
+        <count-click></count-click>
+        <count-click></count-click>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 组件data必须是函数形式，每个实例可以维护一份被返回对象的独立的拷贝：    否则data在复用的组件之间共享
+    // 为了能在模板中使用，这些组件必须先注册以便 Vue 能够识别
+    // 组件注册分为全局注册（如下）和局部注册（写在vue实例中）
+    Vue.component('count-click', {
+        data() {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">你一共点击了{{count}}次</button>'
+    })
+    var vm = new Vue({
+        el: '#app'
+    })
+</script>
+</html>

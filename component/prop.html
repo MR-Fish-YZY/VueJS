@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用v-bind动态传递prop -->
+        <compoent-prop v-for="item in items" :title="item.title" :key="item.id"></compoent-prop>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // prop--->父组件向子组件传递数据
+    //***组件能有一个根节点！！！
+    Vue.component('compoent-prop', {
+        props: ['title'],   //--->组件接收数据的属性
+        template: '<h1>{{title}}</h1>'      //--->组件模板</h1>
+    })
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                items: [{
+                        id: 1,
+                        title: '数学'
+                    },
+                    {
+                        id: 2,
+                        title: '语文'
+                    },
+                    {
+                        id: 3,
+                        title: '英语'
+                    }
+                ]
+            }
+        },
+    })
+</script>
+
+</html>

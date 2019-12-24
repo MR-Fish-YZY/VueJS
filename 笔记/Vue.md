@@ -118,11 +118,18 @@ v-model----------->双向绑定
 
    ​				select
 
-2. 
+2. 修饰符
+
+   .lazy--->由实时转为和change事件同步	
+
+   .number--->自动转为数字，无法被parseFloat()解析 输出原值	
+
+   .trim--->去除收尾空格
 
    ​			
 
-v-html------------->解析html字符串（慎用）
+
+v-html------------->解析html字符串（慎用）--->多用在富文本渲染
 
 v-once--------------->只渲染一次
 
@@ -148,7 +155,6 @@ v-once--------------->只渲染一次
 例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 `event.preventDefault()`：
 
 <form v-on:submit.prevent="onSubmit"> </form>
-
 # vue模板：
 
 ```javascript
@@ -273,4 +279,5 @@ watch回调是命令式的（复杂重复），计算属性是响应式的（简
 
 # vue事件
 
-# 表单输入绑定
+# 组件
+

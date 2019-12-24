@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="modelRadio">
+        <label for="man">男</label>
+        <input type="radio" name="sex" value="男" id="man" v-model="sex">
+        <label for="woman">女</label>
+        <input type="radio" name="sex" value="女" id="woman" v-model="sex">
+        <p>性别为：{{sex}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#modelRadio',
+        data() {
+            return {
+                sex: ''
+            }
+        },
+    })
+</script>
+</html>

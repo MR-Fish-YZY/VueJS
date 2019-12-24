@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="modelCheckbox">
+        <label for="math">数学</label>
+        <input type="checkbox" value="数学" name="lesson" id="math" v-model="sel">
+        <label for="chinese">语文</label>
+        <input type="checkbox" value="语文" name="lesson" id="chinese" v-model="sel">        
+        <label for="english">英语</label>
+        <input type="checkbox" value="英语" name="lesson" id="english" v-model="sel">
+        <p>{{sel}}</p>
+
+        <!-- 没有value时v-model绑定的值为true 或 false -->
+        <label for="checkSel">是否选中</label>
+        <input type="checkbox" name="checkIsSel" id="checkSel" v-model="isSel">
+        <p>{{isSel.toString()}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#modelCheckbox',
+        data() {
+            return {
+                sel: [],
+                isSel: true
+            }
+        },
+    })
+</script>
+</html>
