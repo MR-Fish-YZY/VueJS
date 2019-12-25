@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="oneRoot">
+        <!-- 可以用v-bind绑定props属性 从而简化代码 -->
+        <person-info v-for="person in persons" v-bind:person="person"></person-info>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('person-info', {
+        props: ['person'],
+        //模板字符串    
+        // template只能有一个根节点， 否则会报错
+        template: `<div class="person"> 
+                <p>姓名：{{person.name}}</p>
+                <p>年龄：{{person.age}}</p>
+                <p>性别：{{person.sex}}</p>
+            </div>`
+    })
+    var vm = new Vue({
+        el: '#oneRoot',
+        data() {
+            return {
+                persons: [{
+                    name: '小明',
+                    age: 17,
+                    sex: '男'
+                }, {
+                    name: '小红',
+                    age: 15,
+                    sex: '女'
+                }]
+            }
+        },
+    })
+</script>
+
+</html>
