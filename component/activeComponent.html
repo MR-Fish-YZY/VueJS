@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="activeComponent">
+        
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('math', {
+        props: ['lesson'],
+        template: `<div class="math">
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.content}}</p>
+        </div>`
+    })
+    Vue.component('english', {
+        props: ['lesson'],
+        template: `<div class="english">
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.content}}</p>
+        </div>`
+    })
+    Vue.component('chinese', {
+        props: ['lesson'],
+        template: `<div class="chinese">
+            <h2>{{lesson.title}}</h2>
+            <p>{{lesson.content}}</p>
+        </div>`
+    })
+    var vm = new Vue({
+        el: '#activeComponent',
+        data() {
+            return {
+                math: {
+                    title: 'math',
+                    content: '数学课'
+                },
+                chinese: {
+                    title: 'chinese',
+                    content: '语文课'
+                },
+                english: {
+                    title: 'english',
+                    content: '英语课'
+                },
+                lessonType: ''
+            }
+        },
+    })
+</script>
+
+</html>
