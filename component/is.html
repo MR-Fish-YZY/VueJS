@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .lesson-style{
+        color:indigo;
+    }
+</style>
+<body>
+    <div id="isAttr">
+        <ol is="lesson-item">
+            <li v-for="(item, index) in lessons" :key="index">{{item.title}}</li>
+            <lesson-item v-for="lesson in lessons" :lesson="lesson"  :key="lesson.id">{{lesson}}</lesson-item>
+        </ol>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('lesson-item', {
+        props: ['lesson'],
+        template: `<div class="lesson-style">
+                <h2>{{lesson.title}}</h2>
+                <p>{{lesson.content}}</p>
+            </div>`
+    })
+    var vm = new Vue({
+        el: '#isAttr',
+        data() {
+            return {
+                lessons: [
+                    {
+                        id: 1,
+                        title: '数学课！',
+                        content: '高等数学'
+                    },{
+                        id: 2,
+                        title: '语文课！！',
+                        content: '写作基础'
+                    },{
+                        id: 3,
+                        title: '英语课！！！',
+                        content: '翻译'
+                    }
+                ]
+            }
+        },
+    })
+</script>
+
+</html>
